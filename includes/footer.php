@@ -1,4 +1,5 @@
-<?php // includes/footer.php ?>
+<?php // includes/footer.php 
+?>
 </main>
 <footer class="footer">
     <div class="footer-content">
@@ -9,9 +10,9 @@
         <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="/viskam_flora_full/products/index.php">Shop</a></li>
-                <li><a href="/viskam_flora_full/orders/wedding_page.php">Wedding</a></li>
-                <li><a href="/viskam_flora_full/auth/login_page.php">Login</a></li>
+                <li><a href="/ViskamFlora/products/index.php">Shop</a></li>
+                <li><a href="/ViskamFlora/orders/wedding_page.php">Wedding</a></li>
+                <li><a href="/ViskamFlora/auth/login_page.php">Login</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -23,6 +24,7 @@
     </div>
     <p class="footer-bottom">&copy; <?= date('Y') ?> Viskam Flora. All rights reserved.</p>
 </footer>
-<script src="/viskam_flora_full/assets/js/main.js"></script>
+<script src="/ViskamFlora/assets/js/main.js"></script>
 </body>
+
 </html>
