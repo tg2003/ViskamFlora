@@ -22,7 +22,7 @@ $categories = $db->query("SELECT * FROM categories")->fetch_all(MYSQLI_ASSOC);
 <h2 style="color:#2d5016;margin-bottom:16px;">Shop by Category</h2>
 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px;">
     <?php foreach ($categories as $cat): ?>
-        <a href="/viskam_flora_full/products/index.php?category=<?= $cat['id'] ?>" class="btn btn-secondary"><?= htmlspecialchars($cat['name']) ?></a>
+        <a href="/ViskamFlora/products/index.php?category=<?= $cat['id'] ?>" class="btn btn-secondary"><?= htmlspecialchars($cat['name']) ?></a>
     <?php endforeach; ?>
 </div>
 
