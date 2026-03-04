@@ -56,4 +56,4 @@ $_SESSION['name']    = $name;
 $_SESSION['email']   = $email;
 $_SESSION['role']    = 'customer';
 
-redirect('/index.php', 'Account created! Welcome to Viskam Flora, ' . $name . '!');
+redirect('/ViskamFlora/index.php', 'Account created! Welcome to Viskam Flora, ' . $name . '!');
