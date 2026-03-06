@@ -27,6 +27,7 @@ $cartCount = cartCount();
                 <li><a href="/ViskamFlora/orders/my_orders.php">My Orders</a></li>
                 <?php if (isAdmin()): ?>
                     <li><a href="/ViskamFlora/admin/dashboard.php">Admin</a></li>
+                    <li><a href="/ViskamFlora/admin/admin_register.php">Create Admin</a></li>
                 <?php endif; ?>
                 <li><a href="/ViskamFlora/auth/logout.php">Logout</a></li>
             <?php else: ?>

@@ -2,12 +2,11 @@
 // auth/register_page.php
 $pageTitle = 'Register – Viskam Flora';
 require_once __DIR__ . '/../includes/navbar.php';
-if (isLoggedIn()) redirect('/ViskamFlora/index.php');
 ?>
 
 <div class="form-box">
     <h2>🌸 Create Another Admin</h2>
-    <form method="POST" action="/ViskamFlora/auth/register_backend.php">
+    <form method="POST" action="./admin_register_backend.php">
         <?php csrfField(); ?>
         <div class="form-group">
             <label>Full Name</label>
@@ -29,7 +28,7 @@ if (isLoggedIn()) redirect('/ViskamFlora/index.php');
             <label>Confirm Password</label>
             <input type="password" name="confirm_password" required placeholder="Repeat password">
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;">Create Account</button>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Create Admin</button>
     </form>
     <!-- <p class="mt-2 text-center">Already have an account? <a href="/ViskamFlora/auth/login_page.php">Login</a></p> -->
 </div>
