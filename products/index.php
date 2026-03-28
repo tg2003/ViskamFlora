@@ -49,7 +49,7 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
@@ -68,7 +68,7 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
                 <p style="margin:4px 0 0; opacity:0.85; font-size:0.9rem;">Handpicked flowers &amp; gifts, delivered with love 🌸</p>
             </div>
             <nav style="font-size:0.85rem; opacity:0.85;">
-                <a href="/Test%20by%20antigravity/viskam_flora_full/index.php" style="color:#fff;">Home</a>
+                <a href="<?= BASE_URL ?>index.php" style="color:#fff;">Home</a>
                 <span style="margin:0 8px;">›</span>
                 <span>Shop</span>
             </nav>
@@ -125,7 +125,7 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
                                 <p class="product-price" style="font-size:1.15rem; margin-bottom:12px;"><?= format_price($product['price']) ?></p>
                                 
                                 <div class="product-actions" style="margin-top:auto;">
-                                    <form action="/Test%20by%20antigravity/viskam_flora_full/cart/cart_page.php" method="POST" style="width:100%;">
+                                    <form action="<?= BASE_URL ?>cart/cart_page.php" method="POST" style="width:100%;">
                                         <input type="hidden" name="action" value="add">
                                         <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                                         <input type="hidden" name="qty" value="1">

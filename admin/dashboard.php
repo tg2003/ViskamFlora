@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 
 // Ensure user is admin
 if (!is_admin()) {
-    header("Location: /Test%20by%20antigravity/viskam_flora_full/index.php");
+    header("Location: " . BASE_URL . "index.php");
     exit();
 }
 
@@ -26,7 +26,7 @@ $recent_orders = $conn->query("SELECT o.id, o.total_amount, o.status, o.created_
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>

@@ -27,7 +27,7 @@ function is_admin() {
 // Ensure user is logged in, else redirect
 function require_login() {
     if (!is_logged_in()) {
-        header("Location: /Test%20by%20antigravity/viskam_flora_full/auth/login_page.php");
+        header("Location: " . BASE_URL . "auth/login_page.php");
         exit();
     }
 }
@@ -81,7 +81,7 @@ function get_image_url($img_name) {
             $src = $m[1];
             // If the extracted src is a local relative file
             if (strpos($src, 'http') !== 0 && strpos($src, '/') !== 0) {
-                return '/Test%20by%20antigravity/viskam_flora_full/' . $src;
+                return BASE_URL . $src;
             }
             return $src;
         }
@@ -96,14 +96,14 @@ function get_image_url($img_name) {
     // Direct string is a local path e.g. "uploads/image.jpg"
     if (strpos($img_name, '/') !== false && strpos($img_name, 'http') === false) {
         if (strpos($img_name, '/') !== 0) {
-             return '/Test%20by%20antigravity/viskam_flora_full/' . $img_name;
+             return BASE_URL . $img_name;
         }
     }
 
     // Local file — check uploads directory first
     $path = __DIR__ . '/../uploads/' . $img_name;
     if (file_exists($path)) {
-        return '/Test%20by%20antigravity/viskam_flora_full/uploads/' . $img_name;
+        return BASE_URL . 'uploads/' . $img_name;
     }
 
     // Local filename like "bouquet_1.jpg", "choc_2.jpg" etc. — map to Unsplash pool

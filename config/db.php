@@ -1,6 +1,15 @@
 <?php
 // viskam_flora_full/config/db.php
 
+// Define BASE_URL dynamically
+if (!defined('BASE_URL')) {
+    $base_path = str_replace('\\', '/', dirname(__DIR__));
+    $doc_root = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+    $relative = str_replace($doc_root, '', $base_path);
+    define('BASE_URL', '/' . ltrim($relative, '/') . (empty(ltrim($relative, '/')) ? '' : '/'));
+}
+
+
 // Suppress PHP errors from printing in HTML output (logs still work)
 error_reporting(E_ALL);
 ini_set('display_errors', 0);

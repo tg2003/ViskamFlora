@@ -24,7 +24,7 @@ $featured_products = $conn->query($feat_query);
     <title>Viskam Flora | Premium Flowers & Gifts</title>
     <meta name="description" content="Viskam Flora provides fresh flowers, premium gifts, chocolates, and bespoke arrangements for your loved ones.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/includes/navbar.php'; ?>
@@ -40,7 +40,7 @@ $featured_products = $conn->query($feat_query);
                 <span class="carousel-tag">🌸 New Arrivals</span>
                 <h1>Fresh Bouquets, <br>Delivered Daily</h1>
                 <p>Handpicked flowers for every occasion — birthdays, anniversaries, and more.</p>
-                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=flower-bouquets" class="carousel-btn">Shop Now →</a>
+                <a href="<?= BASE_URL ?>products/index.php?cat=flower-bouquets" class="carousel-btn">Shop Now →</a>
             </div>
         </div>
 
@@ -51,7 +51,7 @@ $featured_products = $conn->query($feat_query);
                 <span class="carousel-tag">🎁 Best Sellers</span>
                 <h1>Premium Gift Boxes <br>For Every Moment</h1>
                 <p>Curated gift sets for him, her, and everyone you love.</p>
-                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=gift-boxes" class="carousel-btn">Shop Now →</a>
+                <a href="<?= BASE_URL ?>products/index.php?cat=gift-boxes" class="carousel-btn">Shop Now →</a>
             </div>
         </div>
 
@@ -62,7 +62,7 @@ $featured_products = $conn->query($feat_query);
                 <span class="carousel-tag">🍫 Sweet Treats</span>
                 <h1>Premium Chocolates <br>They'll Adore</h1>
                 <p>Ferrero Rocher, Lindt, Godiva and more — imported & fresh.</p>
-                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=chocolates" class="carousel-btn">Shop Now →</a>
+                <a href="<?= BASE_URL ?>products/index.php?cat=chocolates" class="carousel-btn">Shop Now →</a>
             </div>
         </div>
 
@@ -73,7 +73,7 @@ $featured_products = $conn->query($feat_query);
                 <span class="carousel-tag">💝 For Her</span>
                 <h1>Gifts She'll <br>Never Forget</h1>
                 <p>Jewelry, spa sets, perfumes & more — because she deserves the best.</p>
-                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=gifts-for-women" class="carousel-btn">Shop Now →</a>
+                <a href="<?= BASE_URL ?>products/index.php?cat=gifts-for-women" class="carousel-btn">Shop Now →</a>
             </div>
         </div>
 
@@ -84,7 +84,7 @@ $featured_products = $conn->query($feat_query);
                 <span class="carousel-tag">💌 Cards</span>
                 <h1>Say It With <br>a Card</h1>
                 <p>Beautiful birthday cards — popup, musical, handcrafted options.</p>
-                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=birthday-cards" class="carousel-btn">Shop Now →</a>
+                <a href="<?= BASE_URL ?>products/index.php?cat=birthday-cards" class="carousel-btn">Shop Now →</a>
             </div>
         </div>
 
@@ -142,7 +142,7 @@ $featured_products = $conn->query($feat_query);
         <h2 class="section-title">Shop by Category</h2>
         <div class="category-grid">
             <?php while($cat = $categories->fetch_assoc()): ?>
-                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=<?= $cat['slug'] ?>" class="category-item">
+                <a href="<?= BASE_URL ?>products/index.php?cat=<?= $cat['slug'] ?>" class="category-item">
                     <div class="category-circle">
                         <img src="<?= $cat_images[$cat['slug']] ?? $fallback_cat ?>" alt="<?= htmlspecialchars($cat['name']) ?>" loading="lazy">
                     </div>
@@ -169,8 +169,8 @@ $featured_products = $conn->query($feat_query);
                         <p class="product-price"><?= format_price($product['price']) ?></p>
                         
                         <div class="product-actions">
-                            <a href="/Test%20by%20antigravity/viskam_flora_full/products/detail.php?id=<?= $product['id'] ?>" class="btn btn-outline" style="flex: 1;">View Details</a>
-                            <form action="/Test%20by%20antigravity/viskam_flora_full/cart/cart_page.php" method="POST" style="flex: 1; display:flex;">
+                            <a href="<?= BASE_URL ?>products/detail.php?id=<?= $product['id'] ?>" class="btn btn-outline" style="flex: 1;">View Details</a>
+                            <form action="<?= BASE_URL ?>cart/cart_page.php" method="POST" style="flex: 1; display:flex;">
                                 <input type="hidden" name="action" value="add">
                                 <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                                 <input type="hidden" name="qty" value="1">
