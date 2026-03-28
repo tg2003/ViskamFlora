@@ -36,7 +36,7 @@ $items = $item_stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Detail #ORD-<?= str_pad($order_id, 5, '0', STR_PAD_LEFT) ?> | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
@@ -85,7 +85,7 @@ $items = $item_stmt->get_result();
                                 <img src="<?= htmlspecialchars(get_image_url($item['image'])) ?>" alt="" style="width:50px; height:50px; object-fit:cover; border-radius:5px;">
                             </td>
                             <td style="padding:10px; font-weight:500;">
-                                <a href="/viskam_flora_full/products/detail.php?id=<?= $item['product_id'] ?>"><?= htmlspecialchars($item['name']) ?></a>
+                                <a href="/Test%20by%20antigravity/viskam_flora_full/products/detail.php?id=<?= $item['product_id'] ?>"><?= htmlspecialchars($item['name']) ?></a>
                             </td>
                             <td style="padding:10px; color:var(--text-muted);"><?= format_price($item['price']) ?></td>
                             <td style="padding:10px; text-align:center;"><?= $item['quantity'] ?></td>
@@ -98,3 +98,4 @@ $items = $item_stmt->get_result();
     </div>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
+

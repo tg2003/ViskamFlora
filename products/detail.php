@@ -38,14 +38,14 @@ $related_products = $rel_stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($product['name']) ?> | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
     <!-- Breadcrumb -->
     <div class="container" style="margin-top: 20px; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">
-        <a href="/viskam_flora_full/index.php">Home</a> / 
+        <a href="/Test%20by%20antigravity/viskam_flora_full/index.php">Home</a> / 
         <a href="index.php?cat=<?= htmlspecialchars($product['category_slug']) ?>"><?= htmlspecialchars($product['category_name']) ?></a> / 
         <span style="color:var(--text-main); font-weight:600;"><?= htmlspecialchars($product['name']) ?></span>
     </div>
@@ -66,7 +66,7 @@ $related_products = $rel_stmt->get_result();
                 <?= htmlspecialchars($product['short_desc']) ?>
             </p>
 
-            <form action="/viskam_flora_full/cart/cart_page.php" method="POST" style="background:#fff; padding:30px; border-radius:var(--border-radius-md); box-shadow:var(--shadow-sm);">
+            <form action="/Test%20by%20antigravity/viskam_flora_full/cart/cart_page.php" method="POST" style="background:#fff; padding:30px; border-radius:var(--border-radius-md); box-shadow:var(--shadow-sm);">
                 <input type="hidden" name="action" value="add">
                 <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                 
@@ -138,3 +138,4 @@ $related_products = $rel_stmt->get_result();
         }
     </script>
     <?php include __DIR__ . '/../includes/footer.php'; ?>
+

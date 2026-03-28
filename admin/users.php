@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 
 // Ensure user is admin
 if (!is_admin()) {
-    header("Location: /viskam_flora_full/index.php");
+    header("Location: /Test%20by%20antigravity/viskam_flora_full/index.php");
     exit();
 }
 
@@ -42,7 +42,7 @@ $users = $conn->query("SELECT * FROM users ORDER BY created_at DESC");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Users | Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
@@ -115,3 +115,4 @@ $users = $conn->query("SELECT * FROM users ORDER BY created_at DESC");
 
 </body>
 </html>
+

@@ -1,6 +1,11 @@
 <?php
 // viskam_flora_full/config/db.php
 
+// Suppress PHP errors from printing in HTML output (logs still work)
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
 $host = 'localhost';
 $user = 'root';
 $pass = ''; // Default XAMPP/WAMP password is empty

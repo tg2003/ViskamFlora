@@ -65,7 +65,7 @@ if (!empty($_SESSION['cart'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
@@ -79,7 +79,7 @@ if (!empty($_SESSION['cart'])) {
                     <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
                 <h3 class="text-muted mb-4">Your cart is currently empty.</h3>
-                <a href="/viskam_flora_full/products/index.php" class="btn btn-primary">Continue Shopping</a>
+                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php" class="btn btn-primary">Continue Shopping</a>
             </div>
         <?php else: ?>
             <div style="display:flex; flex-wrap:wrap; gap:30px;">
@@ -90,7 +90,7 @@ if (!empty($_SESSION['cart'])) {
                             <img src="<?= htmlspecialchars(get_image_url($item['image'])) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="cart-item-img">
                             
                             <div class="cart-item-details">
-                                <a href="/viskam_flora_full/products/detail.php?id=<?= $item['id'] ?>"><h4 style="margin-bottom:5px;"><?= htmlspecialchars($item['name']) ?></h4></a>
+                                <a href="/Test%20by%20antigravity/viskam_flora_full/products/detail.php?id=<?= $item['id'] ?>"><h4 style="margin-bottom:5px;"><?= htmlspecialchars($item['name']) ?></h4></a>
                                 <div class="cart-item-price"><?= format_price($item['price']) ?></div>
                             </div>
                             
@@ -118,7 +118,7 @@ if (!empty($_SESSION['cart'])) {
                     <?php endforeach; ?>
                     
                     <div style="margin-top:20px;">
-                        <a href="/viskam_flora_full/products/index.php" class="btn btn-outline">← Continue Shopping</a>
+                        <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php" class="btn btn-outline">← Continue Shopping</a>
                     </div>
                 </div>
 
@@ -141,7 +141,7 @@ if (!empty($_SESSION['cart'])) {
                             <span style="color:var(--primary-color);"><?= format_price($total_price) ?></span>
                         </div>
                         
-                        <a href="/viskam_flora_full/orders/checkout.php" class="btn btn-primary mt-4" style="width:100%; font-size:1.1rem; padding:15px;">Proceed to Checkout</a>
+                        <a href="/Test%20by%20antigravity/viskam_flora_full/orders/checkout.php" class="btn btn-primary mt-4" style="width:100%; font-size:1.1rem; padding:15px;">Proceed to Checkout</a>
                     </div>
                 </div>
             </div>
@@ -149,3 +149,4 @@ if (!empty($_SESSION['cart'])) {
     </div>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
+

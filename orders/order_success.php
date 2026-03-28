@@ -28,7 +28,7 @@ $order = $result->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Success | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
@@ -52,10 +52,11 @@ $order = $result->fetch_assoc();
             </div>
             
             <div style="display:flex; justify-content:center; gap:20px;">
-                <a href="/viskam_flora_full/orders/my_orders.php" class="btn btn-outline">View My Orders</a>
-                <a href="/viskam_flora_full/products/index.php" class="btn btn-primary">Continue Shopping</a>
+                <a href="/Test%20by%20antigravity/viskam_flora_full/orders/my_orders.php" class="btn btn-outline">View My Orders</a>
+                <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php" class="btn btn-primary">Continue Shopping</a>
             </div>
         </div>
     </div>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
+

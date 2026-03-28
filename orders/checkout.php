@@ -6,14 +6,14 @@ require_once __DIR__ . '/../includes/helpers.php';
 
 // If not logged in, save intended destination and redirect to login
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['redirect_after_login'] = '/viskam_flora_full/orders/checkout.php';
-    header("Location: /viskam_flora_full/auth/login_page.php");
+    $_SESSION['redirect_after_login'] = '/Test%20by%20antigravity/viskam_flora_full/orders/checkout.php';
+    header("Location: /Test%20by%20antigravity/viskam_flora_full/auth/login_page.php");
     exit();
 }
 
 // Redirect to cart if empty
 if (empty($_SESSION['cart'])) {
-    header("Location: /viskam_flora_full/cart/cart_page.php");
+    header("Location: /Test%20by%20antigravity/viskam_flora_full/cart/cart_page.php");
     exit();
 }
 
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
     <script>
         function updateSummary() {
             const subtotal = <?= $total_price ?>;
@@ -245,3 +245,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
+
