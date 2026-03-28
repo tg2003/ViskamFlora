@@ -7,8 +7,16 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
 $host = 'localhost';
-$user = 'root';
+// Parse `.env` file for the password if it exists
+$envPath = __DIR__ . '/../.env';
 $pass = ''; // Default XAMPP/WAMP password is empty
+if (file_exists($envPath)) {
+    $envVariables = parse_ini_file($envPath);
+    if ($envVariables && isset($envVariables['DB_PASS'])) {
+        $user = $envVariables['USER_NAME'];
+        $pass = $envVariables['DB_PASS'];
+    }
+}
 $dbname = 'viskam_flora';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
