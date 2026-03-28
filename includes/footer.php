@@ -12,20 +12,20 @@
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/index.php">Home</a></li>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php">Shop Now</a></li>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/orders/wedding_page.php">Weddings & Events</a></li>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/cart/cart_page.php">View Cart</a></li>
+                    <li><a href="<?= BASE_URL ?>index.php">Home</a></li>
+                    <li><a href="<?= BASE_URL ?>products/index.php">Shop Now</a></li>
+                    <li><a href="<?= BASE_URL ?>orders/wedding_page.php">Weddings & Events</a></li>
+                    <li><a href="<?= BASE_URL ?>cart/cart_page.php">View Cart</a></li>
                 </ul>
             </div>
             
             <div class="footer-col">
                 <h3>Categories</h3>
                 <ul>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=flower-bouquets">Flower Bouquets</a></li>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=gifts-for-men">Gifts for Men & Women</a></li>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=chocolates">Premium Chocolates</a></li>
-                    <li><a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php?cat=gift-boxes">Curated Gift Boxes</a></li>
+                    <li><a href="<?= BASE_URL ?>products/index.php?cat=flower-bouquets">Flower Bouquets</a></li>
+                    <li><a href="<?= BASE_URL ?>products/index.php?cat=gifts-for-men">Gifts for Men & Women</a></li>
+                    <li><a href="<?= BASE_URL ?>products/index.php?cat=chocolates">Premium Chocolates</a></li>
+                    <li><a href="<?= BASE_URL ?>products/index.php?cat=gift-boxes">Curated Gift Boxes</a></li>
                 </ul>
             </div>
             
@@ -46,7 +46,7 @@
 </footer>
 
 <!-- Link global JS -->
-<script src="/Test%20by%20antigravity/viskam_flora_full/assets/js/main.js"></script>
+<script src="<?= BASE_URL ?>assets/js/main.js"></script>
 </body>
 </html>
 

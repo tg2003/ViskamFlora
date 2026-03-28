@@ -21,7 +21,7 @@ $orders = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Orders | Viskam Flora</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
     <style>
         .status-badge {
             padding: 5px 12px;
@@ -45,7 +45,7 @@ $orders = $stmt->get_result();
             <?php if ($orders->num_rows === 0): ?>
                 <div style="padding:40px; text-align:center;">
                     <p class="text-muted mb-4">You haven't placed any orders yet.</p>
-                    <a href="/Test%20by%20antigravity/viskam_flora_full/products/index.php" class="btn btn-primary">Start Shopping</a>
+                    <a href="<?= BASE_URL ?>products/index.php" class="btn btn-primary">Start Shopping</a>
                 </div>
             <?php else: ?>
                 <table style="width:100%; border-collapse:collapse; text-align:left;">

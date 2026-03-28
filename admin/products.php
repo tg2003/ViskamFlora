@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 
 // Ensure user is admin
 if (!is_admin()) {
-    header("Location: /Test%20by%20antigravity/viskam_flora_full/index.php");
+    header("Location: " . BASE_URL . "index.php");
     exit();
 }
 
@@ -76,7 +76,7 @@ while($c = $categories->fetch_assoc()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Products | Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Test%20by%20antigravity/viskam_flora_full/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
     <style>
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
         .modal-content { background-color: #fefefe; margin: 50px auto; padding: 30px; border-radius: 8px; max-width: 600px; height: 80vh; overflow-y:auto; }

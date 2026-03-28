@@ -127,7 +127,7 @@ if (!$products_result) {
             <p><?= htmlspecialchars($line) ?></p>
         <?php endforeach; ?>
     </div>
-    <a class="btn" href="/Test%20by%20antigravity/viskam_flora_full/products/index.php">→ Go to Shop to verify</a>
+    <a class="btn" href="<?= BASE_URL ?>products/index.php">→ Go to Shop to verify</a>
     <p style="color:#999; margin-top:20px; font-size:0.85rem;">⚠️ Delete this file after running: <code>fix_images.php</code></p>
 </body>
 </html>
