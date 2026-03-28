@@ -1,2 +1,0 @@
-# ViskamFlora
-E commerce website
