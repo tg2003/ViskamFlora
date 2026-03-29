@@ -74,10 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <!-- Demo credentials info -->
-        <div style="background: #e2e3e5; color: #383d41; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size:0.85rem;">
+         <!-- Admin: admin@viskamflora.com / Admin@123 -->
+          
+        <!-- <div style="background: #e2e3e5; color: #383d41; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size:0.85rem;">
             <strong>Demo Account:</strong><br>
             Admin: admin@viskamflora.com / Admin@123
-        </div>
+        </div> -->
 
         <form action="" method="POST">
             <div class="form-group">

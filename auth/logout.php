@@ -1,6 +1,7 @@
 <?php
 // viskam_flora_full/auth/logout.php
 session_start();
+require_once __DIR__ . '/../config/db.php';
 
 // Unset all of the session variables
 $_SESSION = array();
