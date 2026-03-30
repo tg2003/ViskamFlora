@@ -35,4 +35,30 @@ if ($conn->connect_error) {
 }
 // Set charset to utf8mb4 for proper rendering of special characters
 $conn->set_charset("utf8mb4");
+
+/**
+ * AUTO-INSERT DEFAULT ADMIN
+ * Ensures that a default administrator exists when the app loads.
+ * Password: Admin@123
+ */
+$admin_email = 'admin@viskamflora.com';
+$check_admin = $conn->prepare("SELECT id FROM users WHERE email = ?");
+if ($check_admin) {
+    $check_admin->bind_param("s", $admin_email);
+    $check_admin->execute();
+    $check_admin->store_result();
+
+    if ($check_admin->num_rows === 0) {
+        $admin_name = 'Admin';
+        $admin_pass = password_hash('Admin@123', PASSWORD_DEFAULT);
+        $admin_role = 'admin';
+        $insert_admin = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
+        if ($insert_admin) {
+            $insert_admin->bind_param("ssss", $admin_name, $admin_email, $admin_pass, $admin_role);
+            $insert_admin->execute();
+            $insert_admin->close();
+        }
+    }
+    $check_admin->close();
+}
 ?>
