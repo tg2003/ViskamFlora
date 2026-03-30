@@ -25,14 +25,6 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert a default Admin user (Password: Admin@123)
--- MD5/password_hash will be needed. Let's use a dummy hash for now, but will overwrite using PHP later if needed.
--- It's better to create admin from PHP or let PHP password_hash it. 
--- For now, let's insert a raw md5 or just a plain text placeholder (Bad practice, but for demo without PHP hash).
--- Let's use PHP's password_hash('Admin@123', PASSWORD_DEFAULT) generated value:
-INSERT IGNORE INTO users (name, email, password, role) VALUES 
-('Admin', 'admin@viskamflora.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'); -- password = password
-
 -- 2. Categories Table
 CREATE TABLE IF NOT EXISTS categories (
     id INT AUTO_INCREMENT PRIMARY KEY,

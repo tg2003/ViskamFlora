@@ -5,6 +5,15 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
 ?>
+<?php if (isset($_SESSION['flash_success'])): ?>
+    <div id="flash-message-container" style="background: #2e7d32; color: #fff; padding: 12px 20px; text-align: center; position: relative; z-index: 10001; font-weight: 500;">
+        <div class="container" style="display:flex; justify-content: space-between; align-items: center;">
+            <span style="flex:1; text-align:center;">✨ <?= $_SESSION['flash_success'] ?></span>
+            <button onclick="document.getElementById('flash-message-container').style.display='none'" style="background:transparent; border:none; color:#fff; font-size:1.5rem; cursor:pointer; line-height:1;">&times;</button>
+        </div>
+    </div>
+    <?php unset($_SESSION['flash_success']); ?>
+<?php endif; ?>
 <nav class="navbar">
     <div class="container nav-container">
         <div class="nav-logo">

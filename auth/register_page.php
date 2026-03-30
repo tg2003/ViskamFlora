@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = sanitize_input($conn, $_POST['address']);
     $phone = sanitize_input($conn, $_POST['phone']);
 
-    if (empty($name) || empty($email) || empty($password)) {
-        $error = "Name, Email, and Password are required.";
+    if (empty($name) || empty($email) || empty($password) || empty($phone)) {
+        $error = "Name, Email, Password, and Phone are required.";
+    } elseif (!preg_match('/^0[0-9]{9}$/', $phone)) {
+        $error = "Phone number must be 10 digits and start with 0.";
     } else {
         // Check if email already exists
         $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
@@ -37,7 +39,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insert_stmt->bind_param("sssss", $name, $email, $hashed_pwd, $address, $phone);
 
             if ($insert_stmt->execute()) {
-                $success = "Registration successful! You can now login.";
+                // Auto-login after registration
+                $_SESSION['user_id'] = $insert_stmt->insert_id;
+                $_SESSION['name'] = $name;
+                $_SESSION['role'] = 'user'; // Default role for new users
+                
+                $_SESSION['flash_success'] = "Welcome to Viskam Flora, " . htmlspecialchars($name) . "! We're glad to have you.";
+                
+                header("Location: " . BASE_URL . "index.php");
+                exit();
             } else {
                 $error = "Something went wrong. Please try again later.";
             }
@@ -90,8 +100,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             
             <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" class="form-control">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" class="form-control" 
+                       pattern="0[0-9]{9}" 
+                       maxlength="10" 
+                       title="Phone number must be 10 digits and start with 0" 
+                       required>
             </div>
             
             <div class="form-group">
