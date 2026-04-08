@@ -75,13 +75,13 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
         </div>
     </div>
 
-    <div class="container" style="display: flex; gap: 40px; margin: 40px auto; min-height: 60vh;">
+    <div class="container products-layout" style="margin: 40px auto; min-height: 60vh;">
         
         <!-- Sidebar Filters -->
-        <aside style="width: 220px; flex-shrink: 0;">
+        <aside class="products-sidebar">
             <div style="background:#fff; padding:24px; border-radius:var(--border-radius-md); box-shadow:var(--shadow-sm); position:sticky; top:100px; border-top:4px solid var(--primary-color);">
                 <h3 style="margin-bottom:18px; font-size:1.1rem; border-bottom:2px solid var(--accent-color); padding-bottom:10px; color:var(--text-main); font-family:'Outfit',sans-serif;">Categories</h3>
-                <ul style="list-style:none; padding:0;">
+                <ul class="products-cat-list" style="list-style:none; padding:0;">
                     <li style="margin-bottom:6px;">
                         <a href="index.php" style="display:block; padding:8px 12px; border-radius:8px; color: <?= !$cat_slug ? '#fff' : 'var(--text-main)' ?>; background: <?= !$cat_slug ? 'var(--primary-color)' : 'transparent' ?>; font-weight: <?= !$cat_slug ? '700' : '400' ?>; transition:all 0.2s;">All Products</a>
                     </li>
@@ -98,7 +98,7 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
         </aside>
 
         <!-- Product List -->
-        <main style="flex-grow: 1;">
+        <main class="products-main">
             <div style="margin-bottom: 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--accent-color); padding-bottom:14px;">
                 <h2 style="font-size:1.6rem; margin:0; color:var(--text-main);">
                     <?php 

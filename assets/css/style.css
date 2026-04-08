@@ -905,3 +905,52 @@ p {
   object-fit: cover;
   width: 100%;
 }
+
+/* --- Products Page Layout --- */
+.products-layout {
+  display: flex;
+  gap: 40px;
+}
+
+.products-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.products-main {
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .products-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .products-sidebar {
+    width: 100%;
+  }
+  
+  .products-sidebar > div {
+    position: static !important; /* override sticky on mobile */
+  }
+  
+  .products-cat-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 15px !important;
+    /* Hide scrollbar for cleaner look */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .products-cat-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .products-cat-list li {
+    margin-bottom: 0 !important;
+    white-space: nowrap;
+  }
+}

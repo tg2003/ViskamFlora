@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
-        <form action="" method="POST" style="display:flex; flex-wrap:wrap; gap:40px;">
+        <form id="checkout_form" action="" method="POST" style="display:flex; flex-wrap:wrap; gap:40px;">
             
             <!-- Checkout Details -->
             <div style="flex:2; min-width:300px;">
@@ -244,5 +244,164 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 
-    <?php include __DIR__ . '/../includes/footer.php'; ?>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.95); z-index:10000; align-items:center; justify-content:center; flex-direction:column;">
+        <div style="width:60px; height:60px; border:5px solid #f3f3f3; border-top:5px solid #004f98; border-radius:50%; animation:spin 1s linear infinite;"></div>
+        <p style="margin-top:25px; font-weight:600; color:#333; font-size:1.1rem; font-family:'Inter', sans-serif;">Redirecting to Commercial Bank Secure Gateway...</p>
+        <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
+    </div>
 
+    <!-- Meiranpay Modal Overlay (Renamed to Commercial Bank) -->
+    <div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center; backdrop-filter: blur(5px);">
+        <div style="background:#fff; width:100%; max-width:450px; padding:35px; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.2); position:relative; font-family:'Inter', sans-serif;">
+            <span onclick="closePaymentModal()" style="position:absolute; right:20px; top:15px; font-size:24px; cursor:pointer; color:#999;">&times;</span>
+            
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+                <div style="background:#004f98; color:white; width:44px; height:44px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.3rem; font-family:serif;">CB</div>
+                <h2 style="margin:0; font-size:1.5rem; color:#004f98; font-weight:800;">Commercial Bank</h2>
+            </div>
+
+            <div style="margin-bottom:25px;">
+                <label style="font-weight:600; color:#1e293b; font-size:0.95rem; display:block; margin-bottom:10px;">Card Type</label>
+                <div style="display:flex; gap:15px;">
+                    <label style="flex:1; border:1px solid #cbd5e1; border-radius:8px; padding:12px; display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="document.getElementById('logo_visa').style.display='block'; document.getElementById('logo_master').style.display='none';">
+                        <input type="radio" name="sim_card_type" value="VISA" checked>
+                        <span style="font-weight:600; color:#1e293b;">VISA</span>
+                    </label>
+                    <label style="flex:1; border:1px solid #cbd5e1; border-radius:8px; padding:12px; display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="document.getElementById('logo_visa').style.display='none'; document.getElementById('logo_master').style.display='flex';">
+                        <input type="radio" name="sim_card_type" value="MASTER">
+                        <span style="font-weight:600; color:#1e293b;">Mastercard</span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-bottom:25px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <label style="font-weight:600; color:#1e293b; font-size:0.95rem;">Card Number</label>
+                    
+                </div>
+                <p style="font-size:0.8rem; color:#64748b; margin-bottom:10px;">Enter the 16-digit card number on the card</p>
+                <div style="position:relative;">
+                    <input type="text" id="sim_card_num" autocomplete="off" placeholder="0000 - 0000 - 0000 - 0000" maxlength="25" style="width:100%; padding:14px 45px 14px 65px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem; outline:none; transition:0.2s; color:#333;" oninput="formatCard(this)">
+                    <div id="card_logo_container" style="position:absolute; left:15px; top:16px; display:flex;">
+                        <div id="logo_visa" style="font-weight:900; font-style:italic; color:#1a1f71; font-size:1.1rem; line-height:1; margin-top:-2px;">VISA</div>
+                        <div id="logo_master" style="display:none; align-items:center;">
+                            <div style="width:14px; height:14px; border-radius:50%; background:#ea001b; opacity:0.9;"></div>
+                            <div style="width:14px; height:14px; border-radius:50%; background:#f79e1b; opacity:0.9; margin-left:-6px;"></div>
+                        </div>
+                    </div>
+                    <div id="card_check" style="position:absolute; right:15px; top:14px; color:#00aa00; display:none;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="#00aaff"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l7.59-7.59L19 6.5l-9 9z" fill="#fff"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+                <div style="flex:1;">
+                    <label style="font-weight:600; color:#1e293b; display:block; font-size:0.95rem;">CVV Number</label>
+                    <span style="font-size:0.8rem; color:#64748b;">Enter the 3 digit number</span>
+                </div>
+                <div style="width:140px; position:relative;">
+                    <input type="text" id="sim_cvv" autocomplete="off" placeholder="123" maxlength="3" style="width:100%; padding:14px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem; text-align:center; outline:none; color:#333;">
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:35px;">
+                <div style="flex:1;">
+                    <label style="font-weight:600; color:#1e293b; display:block; font-size:0.95rem;">Expiry Date</label>
+                    <span style="font-size:0.8rem; color:#64748b;">Enter the expiration date</span>
+                </div>
+                <div style="width:140px; display:flex; gap:10px;">
+                    <input type="text" id="sim_exp_m" autocomplete="off" placeholder="MM" maxlength="2" style="width:50%; padding:14px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem; text-align:center; outline:none; color:#333;">
+                    <input type="text" id="sim_exp_y" autocomplete="off" placeholder="YY" maxlength="2" style="width:50%; padding:14px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem; text-align:center; outline:none; color:#333;">
+                </div>
+            </div>
+
+            <button type="button" id="pay_now_btn" onclick="processPayment()" style="width:100%; background:#004f98; color:#fff; padding:16px; border:none; border-radius:8px; font-weight:600; font-size:1.1rem; cursor:pointer; transition:0.2s;">Pay Now</button>
+            <div id="payment_error" style="color:#ea001b; margin-top:15px; font-size:0.9rem; text-align:center; display:none;"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('checkout_form').addEventListener('submit', function(e) {
+            let method = document.querySelector('input[name="payment_method"]:checked').value;
+            if (method === 'Card') {
+                if (document.getElementById('paymentModal').style.display === 'none') {
+                    e.preventDefault();
+                    
+                    // Pre-validate address before opening payment
+                    let addr = document.getElementById('shipping_address');
+                    let dMethod = document.querySelector('input[name="delivery_method"]:checked').value;
+                    if (dMethod !== 'Pickup' && addr.value.trim() === '') {
+                        alert("Please enter a shipping address.");
+                        addr.focus();
+                        return;
+                    }
+                    
+                    // Show loading overlay first
+                    document.getElementById('loadingOverlay').style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        document.getElementById('loadingOverlay').style.display = 'none';
+                        document.getElementById('paymentModal').style.display = 'flex';
+                    }, 2000); // 2 second delay to simulate redirect
+                }
+            }
+        });
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function formatCard(el) {
+            let val = el.value.replace(/\D/g, '');
+            let formatted = val.match(/.{1,4}/g);
+            el.value = formatted ? formatted.join(' - ') : '';
+            
+            if(val.length === 16) {
+                document.getElementById('card_check').style.display = 'block';
+            } else {
+                document.getElementById('card_check').style.display = 'none';
+            }
+        }
+
+        function processPayment() {
+            let err = document.getElementById('payment_error');
+            err.style.display = 'none';
+            
+            let cc = document.getElementById('sim_card_num').value.replace(/\D/g, '');
+            let cvv = document.getElementById('sim_cvv').value.trim();
+            let expM = document.getElementById('sim_exp_m').value.trim();
+            let expY = document.getElementById('sim_exp_y').value.trim();
+            
+            if(cc.length < 13 || cc.length > 19) {
+                err.innerText = "Invalid Card Number length."; err.style.display = 'block'; return;
+            }
+            if(!/^\d{3}$/.test(cvv)) {
+                err.innerText = "CVV must be 3 digits."; err.style.display = 'block'; return;
+            }
+            if(!/^\d{2}$/.test(expM) || parseInt(expM) < 1 || parseInt(expM) > 12) {
+                err.innerText = "Invalid Expiry Month."; err.style.display = 'block'; return;
+            }
+            if(!/^\d{2}$/.test(expY)) {
+                err.innerText = "Invalid Expiry Year."; err.style.display = 'block'; return;
+            }
+            
+            let btn = document.getElementById('pay_now_btn');
+            btn.innerHTML = '<span style="display:inline-block; animation:spin 1s linear infinite; margin-right:8px;">&#8635;</span> Verifying...';
+            btn.style.opacity = '0.8';
+            btn.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                btn.innerHTML = '&#10004; Payment Successful';
+                btn.style.background = '#00bb2d';
+                btn.style.opacity = '1';
+                
+                setTimeout(() => {
+                    document.getElementById('checkout_form').submit();
+                }, 1000);
+            }, 1500); // 1.5 seconds verification delay
+        }
+    </script>
+
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
