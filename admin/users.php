@@ -60,7 +60,10 @@ $users = $conn->query("SELECT * FROM users ORDER BY created_at DESC");
         </aside>
         
         <main class="admin-content">
-            <h2 class="mb-4">Registered Users</h2>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+                <h2 style="margin:0;">Registered Users</h2>
+                <a href="add_admin.php" class="btn btn-primary" style="text-decoration:none;">+ Add New Admin</a>
+            </div>
             
             <?php if ($error): ?><div style="background:#f8d7da; color:#721c24; padding:10px; border-radius:5px; margin-bottom:15px;"><?= $error ?></div><?php endif; ?>
             <?php if ($success): ?><div style="background:#d4edda; color:#155724; padding:10px; border-radius:5px; margin-bottom:15px;"><?= $success ?></div><?php endif; ?>
