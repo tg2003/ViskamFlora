@@ -19,7 +19,6 @@ $featured_products = $conn->query($feat_query);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viskam Flora | Premium Flowers & Gifts</title>
     <meta name="description" content="Viskam Flora provides fresh flowers, premium gifts, chocolates, and bespoke arrangements for your loved ones.">

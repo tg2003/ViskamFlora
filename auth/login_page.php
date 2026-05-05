@@ -10,6 +10,10 @@ if (is_logged_in()) {
 }
 
 $error = '';
+if (isset($_SESSION['error_msg'])) {
+    $error = $_SESSION['error_msg'];
+    unset($_SESSION['error_msg']);
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = sanitize_input($conn, $_POST['email']);

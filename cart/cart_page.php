@@ -15,6 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_id = isset($_POST['product_id']) ? (int)$_POST['product_id'] : 0;
     
     if ($action === 'add' && $product_id > 0) {
+        if (!isset($_SESSION['user_id'])) {
+            $_SESSION['error_msg'] = "Please log in to add items to your cart.";
+            $_SESSION['redirect_after_login'] = BASE_URL . 'products/detail.php?id=' . $product_id;
+            header("Location: " . BASE_URL . "auth/login_page.php");
+            exit();
+        }
+
         $qty = isset($_POST['qty']) ? (int)$_POST['qty'] : 1;
         
         if (isset($_SESSION['cart'][$product_id])) {
