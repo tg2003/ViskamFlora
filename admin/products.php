@@ -62,7 +62,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Fetch products
-$products = $conn->query("SELECT p.*, c.name as cat_name FROM products p LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.id DESC");
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'newest';
+$order_by = " ORDER BY p.id DESC";
+switch($sort) {
+    case 'price_asc':  $order_by = " ORDER BY p.price ASC"; break;
+    case 'price_desc': $order_by = " ORDER BY p.price DESC"; break;
+    case 'name_asc':   $order_by = " ORDER BY p.name ASC"; break;
+    case 'name_desc':  $order_by = " ORDER BY p.name DESC"; break;
+    case 'oldest':     $order_by = " ORDER BY p.id ASC"; break;
+    case 'newest':     
+    default:           $order_by = " ORDER BY p.id DESC"; break;
+}
+
+$products = $conn->query("SELECT p.*, c.name as cat_name FROM products p LEFT JOIN categories c ON p.category_id = c.id" . $order_by);
 $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
 $cat_options = '';
 while($c = $categories->fetch_assoc()) {
@@ -101,7 +113,19 @@ while($c = $categories->fetch_assoc()) {
         <main class="admin-content">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
                 <h2>Manage Products</h2>
-                <button onclick="openModal('add')" class="btn btn-primary">+ Add New Product</button>
+                <div style="display:flex; gap:15px; align-items:center;">
+                    <form action="products.php" method="GET" style="margin:0;">
+                        <select name="sort" class="form-control" style="padding:8px 12px; font-size:0.9rem; border-radius:8px; display:inline-block; width:auto; cursor:pointer;" onchange="this.form.submit()">
+                            <option value="newest" <?= $sort==='newest'?'selected':'' ?>>Sort: Newest First</option>
+                            <option value="oldest" <?= $sort==='oldest'?'selected':'' ?>>Sort: Oldest First</option>
+                            <option value="price_asc" <?= $sort==='price_asc'?'selected':'' ?>>Sort: Price Low to High</option>
+                            <option value="price_desc" <?= $sort==='price_desc'?'selected':'' ?>>Sort: Price High to Low</option>
+                            <option value="name_asc" <?= $sort==='name_asc'?'selected':'' ?>>Sort: Name A-Z</option>
+                            <option value="name_desc" <?= $sort==='name_desc'?'selected':'' ?>>Sort: Name Z-A</option>
+                        </select>
+                    </form>
+                    <button onclick="openModal('add')" class="btn btn-primary">+ Add New Product</button>
+                </div>
             </div>
             
             <?php if ($error): ?><div style="background:#f8d7da; color:#721c24; padding:10px; border-radius:5px; margin-bottom:15px;"><?= $error ?></div><?php endif; ?>

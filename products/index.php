@@ -30,8 +30,38 @@ if ($search_query) {
     $types .= "ss";
 }
 
-$query .= " ORDER BY p.id DESC";
+$min_price = isset($_GET['min_price']) && is_numeric($_GET['min_price']) ? (float)$_GET['min_price'] : '';
+$max_price = isset($_GET['max_price']) && is_numeric($_GET['max_price']) ? (float)$_GET['max_price'] : '';
 
+if ($min_price !== '') {
+    $query .= " AND p.price >= ?";
+    $params[] = $min_price;
+    $types .= "d";
+}
+if ($max_price !== '') {
+    $query .= " AND p.price <= ?";
+    $params[] = $max_price;
+    $types .= "d";
+}
+
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'newest';
+switch($sort) {
+    case 'price_asc':  $query .= " ORDER BY p.price ASC"; break;
+    case 'price_desc': $query .= " ORDER BY p.price DESC"; break;
+    case 'name_asc':   $query .= " ORDER BY p.name ASC"; break;
+    case 'name_desc':  $query .= " ORDER BY p.name DESC"; break;
+    case 'oldest':     $query .= " ORDER BY p.id ASC"; break;
+    case 'newest':     
+    default:           $query .= " ORDER BY p.id DESC"; break;
+}
+
+$qm = [];
+if($search_query) $qm['q'] = $search_query;
+if($sort !== 'newest') $qm['sort'] = $sort;
+if($min_price !== '') $qm['min_price'] = $min_price;
+if($max_price !== '') $qm['max_price'] = $max_price;
+$q_str = http_build_query($qm);
+$q_str = $q_str ? '&' . $q_str : '';
 $stmt = $conn->prepare($query);
 if ($types) {
     $stmt->bind_param($types, ...$params);
@@ -79,15 +109,15 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
         
         <!-- Sidebar Filters -->
         <aside class="products-sidebar">
-            <div style="background:#fff; padding:24px; border-radius:var(--border-radius-md); box-shadow:var(--shadow-sm); position:sticky; top:100px; border-top:4px solid var(--primary-color);">
+            <div style="background:#fff; padding:24px; border-radius:var(--border-radius-md); box-shadow:var(--shadow-sm); border-top:4px solid var(--primary-color);">
                 <h3 style="margin-bottom:18px; font-size:1.1rem; border-bottom:2px solid var(--accent-color); padding-bottom:10px; color:var(--text-main); font-family:'Outfit',sans-serif;">Categories</h3>
                 <ul class="products-cat-list" style="list-style:none; padding:0;">
                     <li style="margin-bottom:6px;">
-                        <a href="index.php" style="display:block; padding:8px 12px; border-radius:8px; color: <?= !$cat_slug ? '#fff' : 'var(--text-main)' ?>; background: <?= !$cat_slug ? 'var(--primary-color)' : 'transparent' ?>; font-weight: <?= !$cat_slug ? '700' : '400' ?>; transition:all 0.2s;">All Products</a>
+                        <a href="index.php<?= $q_str ? '?'.ltrim($q_str, '&') : '' ?>" style="display:block; padding:8px 12px; border-radius:8px; color: <?= !$cat_slug ? '#fff' : 'var(--text-main)' ?>; background: <?= !$cat_slug ? 'var(--primary-color)' : 'transparent' ?>; font-weight: <?= !$cat_slug ? '700' : '400' ?>; transition:all 0.2s;">All Products</a>
                     </li>
                     <?php while($c = $categories->fetch_assoc()): ?>
                         <li style="margin-bottom:6px;">
-                            <a href="?cat=<?= $c['slug'] ?><?= $search_query ? '&q='.urlencode($search_query) : '' ?>" 
+                            <a href="?cat=<?= $c['slug'] ?><?= $q_str ?>" 
                                style="display:block; padding:8px 12px; border-radius:8px; color: <?= $cat_slug === $c['slug'] ? '#fff' : 'var(--text-main)' ?>; background: <?= $cat_slug === $c['slug'] ? 'var(--primary-color)' : 'transparent' ?>; font-weight: <?= $cat_slug === $c['slug'] ? '700' : '400' ?>; transition:all 0.2s;">
                                 <?= htmlspecialchars($c['name']) ?>
                             </a>
@@ -95,11 +125,29 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
                     <?php endwhile; ?>
                 </ul>
             </div>
+
+            <div style="background:#fff; padding:24px; border-radius:var(--border-radius-md); box-shadow:var(--shadow-sm); margin-top:20px; border-top:4px solid var(--primary-color);">
+                <h3 style="margin-bottom:18px; font-size:1.1rem; border-bottom:2px solid var(--accent-color); padding-bottom:10px; color:var(--text-main); font-family:'Outfit',sans-serif;">Price Range</h3>
+                <form action="index.php" method="GET">
+                    <?php if($cat_slug): ?><input type="hidden" name="cat" value="<?= htmlspecialchars($cat_slug) ?>"><?php endif; ?>
+                    <?php if($search_query): ?><input type="hidden" name="q" value="<?= htmlspecialchars($search_query) ?>"><?php endif; ?>
+                    <?php if($sort !== 'newest'): ?><input type="hidden" name="sort" value="<?= htmlspecialchars($sort) ?>"><?php endif; ?>
+                    
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                        <input type="number" name="min_price" placeholder="Min" class="form-control" style="padding:8px;" value="<?= $min_price !== '' ? htmlspecialchars($min_price) : '' ?>">
+                        <input type="number" name="max_price" placeholder="Max" class="form-control" style="padding:8px;" value="<?= $max_price !== '' ? htmlspecialchars($max_price) : '' ?>">
+                    </div>
+                    <button type="submit" class="btn btn-outline" style="width:100%; padding:8px;">Apply Filter</button>
+                    <?php if($min_price !== '' || $max_price !== ''): ?>
+                        <a href="index.php?<?= http_build_query(array_diff_key($_GET, array_flip(['min_price','max_price']))) ?>" style="display:block; text-align:center; font-size:0.8rem; margin-top:10px; color:red;">Clear Price Filter</a>
+                    <?php endif; ?>
+                </form>
+            </div>
         </aside>
 
         <!-- Product List -->
         <main class="products-main">
-            <div style="margin-bottom: 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--accent-color); padding-bottom:14px;">
+            <div style="margin-bottom: 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--accent-color); padding-bottom:14px; flex-wrap:wrap; gap:10px;">
                 <h2 style="font-size:1.6rem; margin:0; color:var(--text-main);">
                     <?php 
                         if($search_query) echo "Results for &lsquo;" . htmlspecialchars($search_query) . "&rsquo;";
@@ -107,7 +155,20 @@ $categories = $conn->query("SELECT * FROM categories ORDER BY name ASC");
                         else echo "All Products";
                     ?>
                 </h2>
-                <span style="background:var(--accent-color); color:var(--primary-color); font-weight:700; padding:5px 14px; border-radius:50px; font-size:0.85rem;"><?= $result->num_rows ?> items found</span>
+                <div style="display:flex; align-items:center; gap:15px;">
+                    <span style="background:var(--accent-color); color:var(--primary-color); font-weight:700; padding:5px 14px; border-radius:50px; font-size:0.85rem;"><?= $result->num_rows ?> items</span>
+                    <form action="index.php" method="GET" style="display:flex; align-items:center;">
+                        <?php foreach($_GET as $k=>$v): if($k!=='sort') echo '<input type="hidden" name="'.htmlspecialchars($k).'" value="'.htmlspecialchars($v).'">'; endforeach; ?>
+                        <select name="sort" class="form-control" style="padding:6px 10px; font-size:0.9rem; border-radius:8px; cursor:pointer;" onchange="this.form.submit()">
+                            <option value="newest" <?= $sort==='newest'?'selected':'' ?>>Newest Arrivals</option>
+                            <option value="oldest" <?= $sort==='oldest'?'selected':'' ?>>Oldest</option>
+                            <option value="price_asc" <?= $sort==='price_asc'?'selected':'' ?>>Price: Low to High</option>
+                            <option value="price_desc" <?= $sort==='price_desc'?'selected':'' ?>>Price: High to Low</option>
+                            <option value="name_asc" <?= $sort==='name_asc'?'selected':'' ?>>Name: A to Z</option>
+                            <option value="name_desc" <?= $sort==='name_desc'?'selected':'' ?>>Name: Z to A</option>
+                        </select>
+                    </form>
+                </div>
             </div>
 
             <?php if($result->num_rows > 0): ?>

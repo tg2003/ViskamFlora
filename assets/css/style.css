@@ -914,6 +914,9 @@ p {
 
 .products-sidebar {
   width: 220px;
+  position: sticky;
+  top: 100px;
+  align-self: flex-start;
   flex-shrink: 0;
 }
 
