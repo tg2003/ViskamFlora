@@ -93,19 +93,19 @@ INSERT INTO products (category_id, name, short_desc, price, image, is_featured) 
 
 -- Gifts for Women (Cat ID: 3, 13 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
-(3, 'Rose Gold Pendant Necklace', 'Delicate necklace with a floral pendant.', 3500.00, 'gift_women_1.jpg', 1),
-(3, 'Scented Candle Set', 'Aromatic soy candles (Vanilla & Lavender).', 2200.00, 'gift_women_2.jpg', 0),
-(3, 'Luxury Spa Bath Set', 'Bath bombs, salts, and scrubs.', 4000.00, 'gift_women_1.jpg', 0),
-(3, 'Silk Sleeping Mask', 'Soft silk eye mask for beauty sleep.', 1200.00, 'gift_women_2.jpg', 0),
-(3, 'Designer Handbag', 'Chic faux leather tote bag.', 6500.00, 'gift_women_1.jpg', 1),
-(3, 'Makeup Brush Kit', 'Professional 10-piece brush set.', 2800.00, 'gift_women_2.jpg', 0),
-(3, 'Silver Charm Bracelet', 'Elegant bracelet with cute charms.', 3200.00, 'gift_women_1.jpg', 0),
-(3, 'Floral Perfume Spray', 'Sweet and fresh everyday fragrance.', 4500.00, 'gift_women_2.jpg', 0),
-(3, 'Plush Teddy Bear (Large)', 'Soft cuddly teddy bear.', 3800.00, 'gift_women_1.jpg', 0),
-(3, 'Ceramic Jewelry Holder', 'Cute dish for rings and trinkets.', 950.00, 'gift_women_2.jpg', 0),
-(3, 'Pocket Compact Mirror', 'Engraved vintage style mirror.', 750.00, 'gift_women_1.jpg', 0),
-(3, 'Skincare Travel Kit', 'Miniature cleanser, toner, and moisturizer.', 5000.00, 'gift_women_2.jpg', 0),
-(3, 'Satin Robe', 'Luxurious pink satin lounging robe.', 3400.00, 'gift_women_1.jpg', 0);
+(3, 'Rose Gold Pendant Necklace', 'Delicate necklace with a floral pendant.', 3500.00, 'Rose_Gold_Pendant_Necklace.jpg', 1),
+(3, 'Scented Candle Set', 'Aromatic soy candles (Vanilla & Lavender).', 2200.00, 'Scented_Candle_Set.jpg', 0),
+(3, 'Luxury Spa Bath Set', 'Bath bombs, salts, and scrubs.', 4000.00, 'Luxury_Spa_Bath_Set.jpg', 0),
+(3, 'Silk Sleeping Mask', 'Soft silk eye mask for beauty sleep.', 1200.00, 'Silk_Sleeping_Mask.jpg', 0),
+(3, 'Designer Handbag', 'Chic faux leather tote bag.', 6500.00, 'Designer_Handbag.jpg', 1),
+(3, 'Makeup Brush Kit', 'Professional 10-piece brush set.', 2800.00, 'Makeup_Brush_Kit.jpg', 0),
+(3, 'Silver Charm Bracelet', 'Elegant bracelet with cute charms.', 3200.00, 'Silver_Charm_Bracelet.jpg', 0),
+(3, 'Floral Perfume Spray', 'Sweet and fresh everyday fragrance.', 4500.00, 'Floral_Perfume_Spray.jpg', 0),
+(3, 'Plush Teddy Bear (Large)', 'Soft cuddly teddy bear.', 3800.00, 'Plush_Teddy_Bear.jpg', 0),
+(3, 'Ceramic Jewelry Holder', 'Cute dish for rings and trinkets.', 950.00, 'Ceramic_Jewelry_Holder.jpg', 0),
+(3, 'Pocket Compact Mirror', 'Engraved vintage style mirror.', 750.00, 'Pocket_Compact_Mirror.jpg', 0),
+(3, 'Skincare Travel Kit', 'Miniature cleanser, toner, and moisturizer.', 5000.00, 'Skincare_Travel_Kit.jpg', 0),
+(3, 'Satin Robe', 'Luxurious pink satin lounging robe.', 3400.00, 'Satin_Robe.jpg', 0);
 
 -- Chocolates (Cat ID: 4, 25 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
