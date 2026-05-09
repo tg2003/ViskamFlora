@@ -115,7 +115,7 @@ $requests = $conn->query("SELECT * FROM wedding_arrangements ORDER BY created_at
                                             </div>
                                             
                                             <div style="margin-top:15px; text-align:right;">
-                                                <a href="mailto:<?= htmlspecialchars($req['email']) ?>?subject=Viskam Flora - Wedding Inquiry #<?= $req['id'] ?>" class="btn btn-primary" style="padding:8px 15px; font-size:0.9rem;">Send Email to Client</a>
+                                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=<?= htmlspecialchars(urlencode($req['email'])) ?>&su=<?= htmlspecialchars(urlencode('Viskam Flora - Wedding Inquiry #' . $req['id'])) ?>" target="_blank" class="btn btn-primary" style="padding:8px 15px; font-size:0.9rem;">Send Email to Client</a>
                                             </div>
                                         </div>
                                     </div>
