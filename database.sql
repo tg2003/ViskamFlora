@@ -127,13 +127,13 @@ INSERT INTO products (category_id, name, short_desc, price, image, is_featured) 
 (4, 'Rittersport Marzipan', 'Dark chocolate with marzipan filling.', 1200.00, 'Rittersport_Marzipan.jpg', 0),
 (4, 'Rittersport Hazelnut', 'Milk chocolate with whole hazelnuts.', 1400.00, 'Rittersport_Hazelnut.jpg', 0),
 (4, 'Hersheys Kisses Milkpack', 'Bag of classic Hersey\'s Kisses.', 1800.00, 'Hersheys_Kisses_Milkpack.jpg', 0),
-(4, 'Kinder Bueno (x3)', 'Crispy wafer with creamy hazelnut filling.', 1050.00, 'choc_1.jpg', 0),
-(4, 'Kinder Joy (x3)', 'Chocolate treat with a surprise toy.', 900.00, 'choc_2.jpg', 0),
-(4, 'Ghirardelli Dark Caramel', 'Dark chocolate squares with caramel.', 2200.00, 'choc_1.jpg', 0),
-(4, 'Godiva Assorted Truffles', 'Premium assorted chocolate truffles (Small).', 4500.00, 'choc_2.jpg', 0),
-(4, 'Moser Roth Mint', 'German dark chocolate with mint.', 1100.00, 'choc_1.jpg', 0),
-(4, 'Reeses Peanut Butter Cups', 'Chocolate cups with peanut butter.', 1300.00, 'choc_2.jpg', 0),
-(4, 'Maltesers Share Box', 'Crispy malt centers covered in milk chocolate.', 1600.00, 'choc_1.jpg', 0);
+(4, 'Kinder Bueno (x3)', 'Crispy wafer with creamy hazelnut filling.', 1050.00, 'Kinder_Bueno.jpg', 0),
+(4, 'Kinder Joy (x3)', 'Chocolate treat with a surprise toy.', 900.00, 'Kinder_Joy.jpg', 0),
+(4, 'Ghirardelli Dark Caramel', 'Dark chocolate squares with caramel.', 2200.00, 'Ghirardelli_Dark_Caramel.jpg', 0),
+(4, 'Godiva Assorted Truffles', 'Premium assorted chocolate truffles (Small).', 4500.00, 'Godiva_Assorted_Truffles.jpg', 0),
+(4, 'Moser Roth Mint', 'German dark chocolate with mint.', 1100.00, 'Moser_Roth_Mint.jpg', 0),
+(4, 'Reeses Peanut Butter Cups', 'Chocolate cups with peanut butter.', 1300.00, 'Reeses_Peanut_Butter_Cups.jpg', 0),
+(4, 'Maltesers Share Box', 'Crispy malt centers covered in milk chocolate.', 1600.00, 'Maltesers_Share_Box.jpg', 0);
 
 -- Birthday Cards (Cat ID: 5, 8 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
