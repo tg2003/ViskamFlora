@@ -17,13 +17,18 @@ ini_set('log_errors', 1);
 
 $host = 'localhost';
 // Parse `.env` file for the password if it exists
-$envPath = __DIR__ . '/../.env';$user = 'root'; // Default MySQL user$pass = ''; // Default XAMPP/WAMP password is empty
+$envPath = __DIR__ . '/../.env';
+
 if (file_exists($envPath)) {
     $envVariables = parse_ini_file($envPath);
-    if ($envVariables && isset($envVariables[''])) {
-        $user = $envVariables['root'];
-        $pass = $envVariables[''];
+    if ($envVariables && isset($envVariables['DB_PASS'])) {
+        $user = $envVariables['USER_NAME'];
+        $pass = $envVariables['DB_PASS'];
     }
+} else {
+    // If .env doesn't exist, you can set the password here directly
+    $user = 'root'; // Default MySQL user
+    $pass = ''; // Default XAMPP/WAMP password
 }
 $dbname = 'viskam_flora';
 
@@ -60,4 +65,3 @@ if ($check_admin) {
     }
     $check_admin->close();
 }
-?>
