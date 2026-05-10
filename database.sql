@@ -60,21 +60,21 @@ CREATE TABLE IF NOT EXISTS products (
 
 -- 15 Flower Bouquets (Cat ID: 1, Price LKR 1500 - 5000)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
-(1, 'Crimson Love Rose Bouquet', 'A classic bundle of deep red roses.', 4500.00, 'bouquet_1.jpg', 1),
-(1, 'Sunshine Lily Arrangement', 'Bright yellow lilies to brighten the day.', 3200.00, 'bouquet_2.jpg', 0),
-(1, 'Pastel Carnation Delight', 'Soft pastel carnations in an elegant wrap.', 2500.00, 'bouquet_3.jpg', 1),
-(1, 'Tropical Orchid Elegance', 'Exotic orchids for a premium gift.', 5000.00, 'bouquet_4.jpg', 0),
-(1, 'Sweetheart Tulip Bundle', 'Imported fresh tulips in romantic pink.', 4800.00, 'bouquet_5.jpg', 0),
-(1, 'White Whisper Daisies', 'Simple, elegant white daisies.', 1500.00, 'bouquet_6.jpg', 0),
-(1, 'Midnight Blue Roses', 'Unique, specially dyed blue roses.', 4900.00, 'bouquet_7.jpg', 1),
-(1, 'Spring Symphony Mixed Bouquet', 'A vibrant mix of seasonal spring flowers.', 3500.00, 'bouquet_8.jpg', 0),
-(1, 'Rustic Sunflower Charm', 'Sunny sunflowers wrapped in rustic paper.', 2800.00, 'bouquet_9.jpg', 0),
-(1, 'Blush Peony Perfection', 'Luxurious soft pink peonies.', 4200.00, 'bouquet_10.jpg', 0),
-(1, 'Golden Anniversary Bouquet', 'Yellow and golden hues for special moments.', 3800.00, 'bouquet_1.jpg', 0),
-(1, 'Purple Majesty Iris', 'Striking purple irises.', 2900.00, 'bouquet_2.jpg', 0),
-(1, 'Wildflower Meadow Mix', 'A casual, organic wildflower arrangement.', 2100.00, 'bouquet_3.jpg', 0),
-(1, 'Classic White Roses', 'Pure white roses for pure love.', 4500.00, 'bouquet_4.jpg', 0),
-(1, 'Baby Breath Cloud', 'A massive, dreamy bundle of gypsophila.', 1800.00, 'bouquet_5.jpg', 0);
+(1, 'Crimson Love Rose Bouquet', 'A classic bundle of deep red roses.', 4500.00, 'fb8.webp', 1),
+(1, 'Sunshine Lily Arrangement', 'Bright yellow lilies to brighten the day.', 3200.00, 'FB7.webp', 0),
+(1, 'Pastel Carnation Delight', 'Soft pastel carnations in an elegant wrap.', 2500.00, 'FB9.webp', 1),
+(1, 'Tropical Orchid Elegance', 'Exotic orchids for a premium gift.', 5000.00, 'FB5.webp', 0),
+(1, 'Sweetheart Tulip Bundle', 'Imported fresh tulips in romantic pink.', 4800.00, 'FB19.png', 0),
+(1, 'White Whisper Daisies', 'Simple, elegant white daisies.', 1500.00, 'FB2.webp', 0),
+(1, 'Midnight Blue Roses', 'Unique, specially dyed blue roses.', 4900.00, 'FB13.png', 1),
+(1, 'Spring Symphony Mixed Bouquet', 'A vibrant mix of seasonal spring flowers.', 3500.00, 'FB3.webp', 0),
+(1, 'Rustic Sunflower Charm', 'Sunny sunflowers wrapped in rustic paper.', 2800.00, 'FB17.webp', 0),
+(1, 'Blush Peony Perfection', 'Luxurious soft pink peonies.', 4200.00, 'FB18.png', 0),
+(1, 'Golden Anniversary Bouquet', 'Yellow and golden hues for special moments.', 3800.00, 'FB4.webp', 0),
+(1, 'Purple Majesty Iris', 'Striking purple irises.', 2900.00, 'FB20.png', 0),
+(1, 'Wildflower Meadow Mix', 'A casual, organic wildflower arrangement.', 2100.00, 'FB2.webp', 0),
+(1, 'Classic White Roses', 'Pure white roses for pure love.', 4500.00, 'FB16.jpg', 0),
+(1, 'Baby Breath Cloud', 'A massive, dreamy bundle of gypsophila.', 1800.00, 'FB6.webp', 0);
 
 -- Gifts for Men (Cat ID: 2, 12 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
@@ -148,10 +148,10 @@ INSERT INTO products (category_id, name, short_desc, price, image, is_featured) 
 
 -- Gift Boxes (Cat ID: 6, 4 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
-(6, 'Ultimate Romance Box', 'Red roses, Ferrero, plush bear, and a card.', 8500.00, 'box_1.jpg', 1),
-(6, 'Gentleman\'s Classic Combo', 'Wallet, pen, cologne, and dark chocolate.', 9500.00, 'box_2.jpg', 1),
-(6, 'Sweet Cravings Box', 'Assortment of imported chocolates & sweets.', 5500.00, 'box_1.jpg', 0),
-(6, 'Spa Retreat Gift Box', 'Candles, bath bombs, robe, and skincare.', 7500.00, 'box_2.jpg', 0);
+(6, 'Ultimate Romance Box', 'Red roses, Ferrero, plush bear, and a card.', 8500.00, 'GB4.png', 1),
+(6, 'Gentleman Classic Combo', 'Wallet, pen, cologne, and dark chocolate.', 9500.00, 'GB3.png', 1),
+(6, 'Sweet Cravings Box', 'Assortment of imported chocolates & sweets.', 5500.00, 'GB2.png', 0),
+(6, 'Spa Retreat Gift Box', 'Candles, bath bombs, robe, and skincare.', 7500.00, 'GB1.png', 0);
 
 
 -- 4. Orders Table
