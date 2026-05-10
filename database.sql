@@ -78,18 +78,18 @@ INSERT INTO products (category_id, name, short_desc, price, image, is_featured) 
 
 -- Gifts for Men (Cat ID: 2, 12 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
-(2, 'Classic Leather Wallet', 'Genuine black leather wallet.', 3000.00, 'gift_men_1.jpg', 1),
-(2, 'Men\'s Grooming Kit', 'Complete grooming essentials.', 4500.00, 'gift_men_2.jpg', 0),
-(2, 'Stainless Steel Watch', 'Elegant analog wristwatch.', 8500.00, 'gift_men_1.jpg', 0),
-(2, 'Matte Black Pen Set', 'Premium pen set for professionals.', 2500.00, 'gift_men_2.jpg', 0),
-(2, 'Sports Sunglasses', 'UV protected stylish shades.', 3200.00, 'gift_men_1.jpg', 0),
-(2, 'Cologne & Body Wash Set', 'Refreshing masculine fragrance.', 5500.00, 'gift_men_2.jpg', 1),
-(2, 'Engraved Keychain', 'Customizable metal keychain.', 800.00, 'gift_men_1.jpg', 0),
-(2, 'Men\'s Leather Belt', 'Reversible formal belt.', 2200.00, 'gift_men_2.jpg', 0),
-(2, 'Travel Neck Pillow', 'Comfortable memory foam neck pillow.', 1500.00, 'gift_men_1.jpg', 0),
-(2, 'Smart Fitness Band', 'Activity and heart rate tracker.', 6000.00, 'gift_men_2.jpg', 0),
-(2, 'Whiskey Glass Set', 'Two crystal rock glasses.', 2800.00, 'gift_men_1.jpg', 0),
-(2, 'Cufflinks Box', 'Silver plated formal cufflinks.', 1800.00, 'gift_men_2.jpg', 0);
+(2, 'Classic Leather Wallet', 'Genuine black leather wallet.', 3000.00, 'GM12.webp', 1),
+(2, 'Men\'s Grooming Kit', 'Complete grooming essentials.', 4500.00, 'GM7.avif', 0),
+(2, 'Stainless Steel Watch', 'Elegant analog wristwatch.', 8500.00, 'GM3.webp', 0),
+(2, 'Matte Black Pen Set', 'Premium pen set for professionals.', 2500.00, 'GM8.webp', 0),
+(2, 'Sports Sunglasses', 'UV protected stylish shades.', 3200.00, 'GM4.webp', 0),
+(2, 'Cologne & Body Wash Set', 'Refreshing masculine fragrance.', 5500.00, 'GM11.webp', 1),
+(2, 'Engraved Keychain', 'Customizable metal keychain.', 800.00, 'GM9.avif', 0),
+(2, 'Men\'s Leather Belt', 'Reversible formal belt.', 2200.00, 'GM6.jpg', 0),
+(2, 'Travel Neck Pillow', 'Comfortable memory foam neck pillow.', 1500.00, 'GM2.jpg', 0),
+(2, 'Smart Fitness Band', 'Activity and heart rate tracker.', 6000.00, 'GM5.jpg', 0),
+(2, 'Whiskey Glass Set', 'Two crystal rock glasses.', 2800.00, 'GM1.jpg', 0),
+(2, 'Cufflinks Box', 'Silver plated formal cufflinks.', 1800.00, 'GM10.webp', 0);
 
 -- Gifts for Women (Cat ID: 3, 13 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
@@ -137,14 +137,14 @@ INSERT INTO products (category_id, name, short_desc, price, image, is_featured) 
 
 -- Birthday Cards (Cat ID: 5, 8 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
-(5, 'Pop-up Birthday Cake Card', '3D popup greeting card.', 600.00, 'card_1.jpg', 1),
-(5, 'Elegant Gold Foil Card', 'Minimalist card with gold details.', 450.00, 'card_2.jpg', 0),
-(5, 'Funny Birthday Wishes Card', 'Humorous card for friends.', 350.00, 'card_1.jpg', 0),
-(5, 'Romantic Love Birthday Card', 'Heartwarming wishes for your partner.', 500.00, 'card_2.jpg', 0),
-(5, 'Floral Watercolor Card', 'Beautiful painted flower design.', 400.00, 'card_1.jpg', 0),
-(5, 'Musical Happy Birthday Card', 'Plays a tune when opened.', 850.00, 'card_2.jpg', 0),
-(5, 'Blank Kraft Paper Card', 'Rustic blank card for custom messages.', 250.00, 'card_1.jpg', 0),
-(5, 'Giant Milestone Card', 'Oversized card for 18th/21st/50th.', 1200.00, 'card_2.jpg', 0);
+(5, 'Pop-up Birthday Cake Card', '3D popup greeting card.', 600.00, 'BC8.webp', 1),
+(5, 'Elegant Gold Foil Card', 'Minimalist card with gold details.', 450.00, 'BC2.jpg', 0),
+(5, 'Funny Birthday Wishes Card', 'Humorous card for friends.', 350.00, 'BC4.webp', 0),
+(5, 'Romantic Love Birthday Card', 'Heartwarming wishes for your partner.', 500.00, 'BC7.jpg', 0),
+(5, 'Floral Watercolor Card', 'Beautiful painted flower design.', 400.00, 'BC3.jpg', 0),
+(5, 'Musical Happy Birthday Card', 'Plays a tune when opened.', 850.00, 'BC6.jpg', 0),
+(5, 'Blank Kraft Paper Card', 'Rustic blank card for custom messages.', 250.00, 'BC1.png', 0),
+(5, 'Giant Milestone Card', 'Oversized card for 18th/21st/50th.', 1200.00, 'BC5.jpg', 0);
 
 -- Gift Boxes (Cat ID: 6, 4 items)
 INSERT INTO products (category_id, name, short_desc, price, image, is_featured) VALUES
