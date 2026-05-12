@@ -192,3 +192,11 @@ CREATE TABLE IF NOT EXISTS wedding_arrangements (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
+
+-- dummy users customers (pwd is always ='password')
+INSERT INTO users (name, email, password, role, address, phone, created_at) VALUES
+('Kusal Perera', 'kusal@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', 'Colombo 07', '0771234567', NOW()),
+('Dilshan Silva', 'dilshan@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', 'Kandy', '0712345678', NOW()),
+('Amara Fernando', 'amara@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', 'Galle', '0753456789', NOW()),
+('Nimali Rathnayake', 'nimali@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', 'Negombo', '0724567890', NOW()),
+('Sajith Gunawardena', 'sajith@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', 'Matara', '0785678901', NOW());
