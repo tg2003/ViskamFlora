@@ -18,6 +18,7 @@ $featured_products = $conn->query($feat_query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viskam Flora | Premium Flowers & Gifts</title>
@@ -25,6 +26,7 @@ $featured_products = $conn->query($feat_query);
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 </head>
+
 <body>
     <?php include __DIR__ . '/includes/navbar.php'; ?>
 
@@ -33,7 +35,7 @@ $featured_products = $conn->query($feat_query);
 
 
         <!-- Slide 1 (Eager load) -->
-        <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1563241527-2804ec6fc970?q=60&w=1000&auto=format&fit=crop');">
+        <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=1000&auto=format&fit=crop');">
             <div class="carousel-overlay"></div>
             <div class="carousel-legend">
                 <span class="carousel-tag">🌸 New Arrivals</span>
@@ -103,26 +105,26 @@ $featured_products = $conn->query($feat_query);
     </div>
 
     <script>
-    (function() {
-        let current = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots   = document.querySelectorAll('.dot');
-        let timer    = setInterval(() => moveCarousel(1), 5000);
+        (function() {
+            let current = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            let timer = setInterval(() => moveCarousel(1), 5000);
 
-        window.goToSlide = function(n) {
-            slides[current].classList.remove('active');
-            dots[current].classList.remove('active');
-            current = (n + slides.length) % slides.length;
-            slides[current].classList.add('active');
-            dots[current].classList.add('active');
-            clearInterval(timer);
-            timer = setInterval(() => moveCarousel(1), 5000);
-        };
+            window.goToSlide = function(n) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = (n + slides.length) % slides.length;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+                clearInterval(timer);
+                timer = setInterval(() => moveCarousel(1), 5000);
+            };
 
-        window.moveCarousel = function(dir) {
-            goToSlide(current + dir);
-        };
-    })();
+            window.moveCarousel = function(dir) {
+                goToSlide(current + dir);
+            };
+        })();
     </script>
 
     <!-- Categories Section -->
@@ -140,7 +142,7 @@ $featured_products = $conn->query($feat_query);
     <section class="categories-preview container">
         <h2 class="section-title">Shop by Category</h2>
         <div class="category-grid">
-            <?php while($cat = $categories->fetch_assoc()): ?>
+            <?php while ($cat = $categories->fetch_assoc()): ?>
                 <a href="<?= BASE_URL ?>products/index.php?cat=<?= $cat['slug'] ?>" class="category-item">
                     <div class="category-circle">
                         <img src="<?= $cat_images[$cat['slug']] ?? $fallback_cat ?>" alt="<?= htmlspecialchars($cat['name']) ?>" loading="lazy">
@@ -155,18 +157,18 @@ $featured_products = $conn->query($feat_query);
     <section class="products-section container" style="padding-top:20px;">
         <h2 class="section-title" style="margin-bottom:20px;">Hot & Featured</h2>
         <p class="text-center mb-4 text-muted">Handpicked favorites loved by our customers.</p>
-        
+
         <div class="product-grid">
-            <?php while($product = $featured_products->fetch_assoc()): ?>
+            <?php while ($product = $featured_products->fetch_assoc()): ?>
                 <div class="product-card">
                     <div class="product-badge">Hot</div>
                     <img src="<?= htmlspecialchars(get_image_url($product['image'])) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="product-image" loading="lazy">
-                    
+
                     <div class="product-info">
                         <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;"><?= htmlspecialchars($product['category_name']) ?></span>
                         <h3 class="product-title"><?= htmlspecialchars($product['name']) ?></h3>
                         <p class="product-price"><?= format_price($product['price']) ?></p>
-                        
+
                         <div class="product-actions">
                             <a href="<?= BASE_URL ?>products/detail.php?id=<?= $product['id'] ?>" class="btn btn-outline" style="flex: 1;">View Details</a>
                             <form action="<?= BASE_URL ?>cart/cart_page.php" method="POST" style="flex: 1; display:flex;">
@@ -183,4 +185,3 @@ $featured_products = $conn->query($feat_query);
     </section>
 
     <?php include __DIR__ . '/includes/footer.php'; ?>
-
