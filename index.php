@@ -128,8 +128,8 @@ $featured_products = $conn->query($feat_query);
     <!-- Categories Section -->
     <?php
     $cat_images = [
-        'flower-bouquets'  => 'https://images.unsplash.com/photo-1563241527-2804ec6fc970?q=60&w=150&auto=format&fit=crop',
-        'gifts-for-men'    => 'https://images.unsplash.com/photo-1536031232-e7bb4d0f52ee?q=60&w=150&auto=format&fit=crop',
+        'flower-bouquets'  => htmlspecialchars(get_image_url('bouquet_3.jpg')),
+        'gifts-for-men'    => 'https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=60&w=150&auto=format&fit=crop',
         'gifts-for-women'  => 'https://images.unsplash.com/photo-1612817288484-6f916006741a?q=60&w=150&auto=format&fit=crop',
         'chocolates'       => 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=60&w=150&auto=format&fit=crop',
         'birthday-cards'   => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=60&w=150&auto=format&fit=crop',
