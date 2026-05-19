@@ -197,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label style="display:flex; align-items:center; gap:10px; padding:15px; border:1px solid #ddd; border-radius:var(--border-radius-sm); cursor:pointer;">
                             <input type="radio" name="payment_method" value="Card">
                             <div style="flex-grow:1;">
-                                <strong>Credit/Debit Card (Demo)</strong><br>
+                                <strong>Credit/Debit Card</strong><br>
                                 <span class="text-muted" style="font-size:0.9rem;">Simulates a successful card transaction.</span>
                             </div>
                         </label>

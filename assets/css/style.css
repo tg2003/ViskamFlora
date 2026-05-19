@@ -913,11 +913,28 @@ p {
 }
 
 .products-sidebar {
-  width: 220px;
+  width: 260px;
   position: sticky;
   top: 100px;
   align-self: flex-start;
   flex-shrink: 0;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for sidebar */
+.products-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.products-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.products-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+.products-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0,0,0,0.2);
 }
 
 .products-main {
