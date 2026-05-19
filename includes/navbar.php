@@ -37,6 +37,7 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
             <li><a href="<?= BASE_URL ?>index.php">Home</a></li>
             <li><a href="<?= BASE_URL ?>products/index.php">Shop All</a></li>
             <li><a href="<?= BASE_URL ?>orders/wedding_page.php">Weddings & Events</a></li>
+            <li><a href="<?= BASE_URL ?>contact.php">Contact Us</a></li>
         </ul>
 
         <div class="nav-actions">
