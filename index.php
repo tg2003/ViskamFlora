@@ -79,7 +79,7 @@ $featured_products = $conn->query($feat_query);
         </div>
 
         <!-- Slide 5 -->
-        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=60&w=1000&auto=format&fit=crop');">
+        <div class="carousel-slide" style="background-image: url('uploads/BC3.jpg');">
             <div class="carousel-overlay"></div>
             <div class="carousel-legend">
                 <span class="carousel-tag">💌 Cards</span>
@@ -130,12 +130,12 @@ $featured_products = $conn->query($feat_query);
     <!-- Categories Section -->
     <?php
     $cat_images = [
-        'flower-bouquets'  => htmlspecialchars(get_image_url('bouquet_3.jpg')),
-        'gifts-for-men'    => 'https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=60&w=150&auto=format&fit=crop',
-        'gifts-for-women'  => 'https://images.unsplash.com/photo-1612817288484-6f916006741a?q=60&w=150&auto=format&fit=crop',
-        'chocolates'       => 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=60&w=150&auto=format&fit=crop',
-        'birthday-cards'   => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=60&w=150&auto=format&fit=crop',
-        'gift-boxes'       => 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=60&w=150&auto=format&fit=crop',
+        'flower-bouquets'  => htmlspecialchars(get_image_url('bouquet_1.jpg')),
+        'gifts-for-men'    => htmlspecialchars(get_image_url('GM7.avif')),
+        'gifts-for-women'  => htmlspecialchars(get_image_url('Skincare_Travel_Kit.jpg')),
+        'chocolates'       => htmlspecialchars(get_image_url('Toblerone_Gold.jpg')),
+        'birthday-cards'   => htmlspecialchars(get_image_url('BC3.jpg')),
+        'gift-boxes'       => htmlspecialchars(get_image_url('GM11.webp')),
     ];
     $fallback_cat = 'https://images.unsplash.com/photo-1490750967868-88df5691cc85?q=60&w=150&auto=format&fit=crop';
     ?>
